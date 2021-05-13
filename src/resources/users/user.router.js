@@ -8,4 +8,16 @@ router.route('/').get(async (req, res) => {
   res.json(users.map(User.toResponse));
 });
 
+router.route('/:userId').get(async () => {
+});
+
+router.route('/').post(async () => {
+});
+
+router.route('/:userId').put(async () => {
+});
+
+router.route('/:userId').delete(async () => {
+});
+
 module.exports = router;
