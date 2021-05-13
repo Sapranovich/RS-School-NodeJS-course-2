@@ -1,5 +1,5 @@
 const usersRepo = require('./user.memory.repository');
 
-const getAll = () => usersRepo.getAll();
+const getAllUsers = () => usersRepo.getAllUsers();
 
-module.exports = { getAll };
+module.exports = { getAllUsers };

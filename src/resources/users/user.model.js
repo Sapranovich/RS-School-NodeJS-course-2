@@ -1,16 +1,9 @@
-const uuid = require('uuid');
-
 class User {
-  constructor({
-    id = uuid(),
-    name = 'USER',
-    login = 'user',
-    password = 'P@55w0rd'
-  } = {}) {
+  constructor(id, index) {
     this.id = id;
-    this.name = name;
-    this.login = login;
-    this.password = password;
+    this.name = `USER_${index}`;
+    this.login = `user_${index}`;
+    this.password = `P@55w0rd_${index}`;
   }
 
   static toResponse(user) {
