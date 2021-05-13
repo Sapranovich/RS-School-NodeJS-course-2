@@ -5,4 +5,9 @@ const getAllBoards = async () => {
   return data
 };
 
-module.exports = { getAllBoards };
+const getBoard = async (boardId) => {
+  const board = await BD.getBoard(boardId);
+  return board;
+}
+
+module.exports = { getAllBoards, getBoard };

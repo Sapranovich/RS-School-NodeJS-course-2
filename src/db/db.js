@@ -11,7 +11,6 @@ const db = {
 
 //  Заполнение Базы данных
 const UserIds = Array(5).fill().map(() => uuidv4())
-// const 
 db.Users.push(...UserIds.map((id, index) => new User(id, index)))
 db.Boards.push(new Board())
 db.Users.map((user, index) => {
@@ -22,13 +21,32 @@ db.Users.map((user, index) => {
 })
 // ===============================================================
 
+// ======================================================= получить все данные категории 
 const getAllUsers = () => db.Users.filter(entity => entity);
 const getAllBoards = () => db.Boards.filter(entity => entity);
 const getAllTasks = (boardId) => db.Tasks.filter(task => task.boardId === boardId)
+// =====================================================================================
 
+// ======================================================= получить данные по id  
+const getUser = (userId) => {
+  const resault = db.Users.filter(user => user.id === userId)[0];
+  return resault
+} 
+const getBoard = (boardId) => {
+    const resault = db.Boards.filter(board => board.id === boardId)[0];
+    return resault
+}
+const getTask = (boardId, taskId) => {
+    const resault = db.Tasks.filter(task => task.boardId === boardId && task.id === taskId)[0];
+    return resault
+}
+// =====================================================================================
 
 module.exports = {
     getAllUsers,
     getAllBoards,
-    getAllTasks
+    getAllTasks,
+    getUser,
+    getBoard,
+    getTask
 }

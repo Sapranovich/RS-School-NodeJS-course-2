@@ -6,8 +6,10 @@ router.route('/').get(async (req, res) => {
   res.json(boards);
 })
 
-router.route('/:boardId').get(async () => {
-
+router.route('/:boardId').get(async (req, res) => {
+  const {boardId} = req.params;
+  const board = await boardService.getBoard(boardId);
+  res.json(board);
 })
 
 router.route('/').post(async () => {

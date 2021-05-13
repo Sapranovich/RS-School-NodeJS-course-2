@@ -7,7 +7,10 @@ router.route('/').get(async (req, res) => {
   res.json(users.map(User.toResponse));
 });
 
-router.route('/:userId').get(async () => {
+router.route('/:userId').get(async (req, res) => {
+  const {userId} = req.params;
+  const user = await usersService.getUser(userId);
+  res.json(User.toResponse(user));
 });
 
 router.route('/').post(async () => {

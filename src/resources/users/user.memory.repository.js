@@ -5,4 +5,9 @@ const getAllUsers = async () => {
   return data
 };
 
-module.exports = { getAllUsers };
+ const getUser = async (userId) => {
+   const user = await BD.getUser(userId);
+   return user
+ }
+
+module.exports = { getAllUsers, getUser };
