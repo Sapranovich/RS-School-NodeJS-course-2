@@ -1,7 +1,9 @@
 const router = require('express').Router();
+const boardService = require('./board.service');
 
-router.route('/').get(async () => {
-
+router.route('/').get(async (req, res) => {
+  const boards = await boardService.getAllBoards();
+  res.json(boards);
 })
 
 router.route('/:boardId').get(async () => {
