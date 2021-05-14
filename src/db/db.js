@@ -57,9 +57,9 @@ const createUser = (body) => {
   db.Users.push(newUser);
   return db.Users.filter((user) => user.id === id)[0];
 };
-const createTask = (body) => {
+const createTask = (boardId, body) => {
   const id = uuidv4();
-  const newTask = new Task({ id, ...body });
+  const newTask = new Task({ id, ...body, boardId });
   db.Tasks.push(newTask);
   return db.Tasks.filter((task) => task.id === id)[0];
 };
@@ -91,6 +91,11 @@ const removeBoard = (boardId) => {
   const boardIndex = db.Boards.findIndex(board => board.id === boardId);
   return db.Boards.pop(boardIndex, 1);
 }
+
+const removeTask = (taskId) => {
+  const taskIndex = db.Tasks.findIndex(task => task.id === taskId);
+  return db.Tasks.pop(taskIndex, 1);
+}
 //= ==============
 
 // ============= обновление
@@ -107,6 +112,15 @@ const updateBoard = (boardId, body) => {
   return db.Boards[boardIndex];
 }
 
+const updateTask = (taskId, body) => {
+  const taskIndex = db.Tasks.findIndex(task => task.id === taskId);
+  db.Tasks[taskIndex] = {
+    id:taskId,
+    ...body
+  }
+  return db.Tasks[taskIndex]
+}
+
 module.exports = {
   getAllUsers,
   getAllBoards,
@@ -119,6 +133,8 @@ module.exports = {
   createBoard,
   removeUser,
   removeBoard,
+  removeTask,
   updateUser,
-  updateBoard
+  updateBoard,
+  updateTask
 };
