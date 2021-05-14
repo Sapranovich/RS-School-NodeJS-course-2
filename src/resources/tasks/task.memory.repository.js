@@ -9,7 +9,13 @@ const getTask = async (boardId, taskId) => {
   return task
 }
 
+const createTask = async (body) => {
+   const task = await BD.createTask(body);
+   return task;
+}
+
 module.exports = {
     getAllTasks,
-    getTask
+    getTask,
+    createTask
 }

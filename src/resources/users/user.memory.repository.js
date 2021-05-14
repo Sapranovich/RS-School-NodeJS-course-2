@@ -10,4 +10,19 @@ const getAllUsers = async () => {
    return user
  }
 
-module.exports = { getAllUsers, getUser };
+ const createUser = async (body) => {
+   const user = await BD.createUser(body);
+   return user;
+ }
+
+ const removeUser = async (userId) => {
+    const resault = await BD.removeUser(userId);
+    return resault;
+ }
+
+ const updateUser = async (userId, body) => {
+    const user = await BD.updateUser(userId, body);
+    return user;
+ }
+
+module.exports = { getAllUsers, getUser, createUser, removeUser, updateUser };
