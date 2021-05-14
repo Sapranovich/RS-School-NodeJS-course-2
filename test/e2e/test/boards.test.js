@@ -87,7 +87,6 @@ describe('Boards suite', () => {
         .expect(201)
         .expect('Content-Type', /json/)
         .then(res => {
-          console.log('test', res.body)
           boardId = res.body.id;
           expect(res.body.id).to.be.a('string');
           jestExpect(res.body).toMatchObject(TEST_BOARD_DATA);

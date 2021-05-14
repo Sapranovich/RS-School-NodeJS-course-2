@@ -11,7 +11,11 @@ router.route('/:boardId/tasks').get(async (req, res) => {
 router.route('/:boardId/tasks/:taskId').get(async (req, res) => {
     const { boardId, taskId } = req.params;
     const task = await taskService.getTask(boardId, taskId);
-    res.status(200).json(task);
+    if(task) {
+      res.status(200).json(task);
+    } else {
+      res.status(404).json('Not Found');
+    }
 })
 
 router.route('/:boardId/tasks').post(async (req, res) => {

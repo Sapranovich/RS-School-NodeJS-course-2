@@ -10,21 +10,21 @@ const db = {
 };
 
 //  Заполнение Базы данных
-const UserIds = Array(5)
-  .fill()
-  .map(() => uuidv4());
-db.Users.push(...UserIds.map(id => new User({ id })));
-db.Boards.push(new Board());
-db.Users.map((user, index) => {
-  const userId = user.id;
-  const boardId = db.Boards[0].id;
-  const columnId = db.Boards[0].columns[0].id;
-  return db.Tasks.push(
-    ...Array(index + 1)
-      .fill()
-      .map(() => new Task({ id: userId, boardId, columnId }))
-  );
-});
+// const UserIds = Array(5)
+//   .fill()
+//   .map(() => uuidv4());
+// db.Users.push(...UserIds.map(id => new User({ id })));
+// db.Boards.push(new Board());
+// db.Users.map((user, index) => {
+//   const userId = user.id;
+//   const boardId = db.Boards[0].id;
+//   const columnId = db.Boards[0].columns[0].id;
+//   return db.Tasks.push(
+//     ...Array(index)
+//       .fill()
+//       .map(() => new Task({ id: userId, boardId, columnId }))
+//   );
+// });
 // ===============================================================
 
 // ======================================================= получить все данные категории
@@ -43,9 +43,7 @@ const getBoard = (boardId) => {
   return resault;
 };
 const getTask = (boardId, taskId) => {
-  const resault = db.Tasks.filter(
-    (task) => task.boardId === boardId && task.id === taskId
-  )[0];
+  const resault = db.Tasks.filter((task) => task.boardId === boardId && task.id === taskId)[0];
   return resault;
 };
 // =====================================================================================
@@ -84,17 +82,31 @@ const createBoard = (body) => {
 //  ================== удаление 
 const removeUser = (userId) => {
   const userIndex = db.Users.findIndex(user => user.id === userId);
-  return db.Users.pop(userIndex, 1);
+  
+  db.Tasks.forEach((task, index) => {
+    if(task.userId === userId){
+      db.Tasks[index] = { ...task, userId: null }
+    }
+  });
+
+  return db.Users.splice(userIndex, 1);
 };
 
 const removeBoard = (boardId) => {
   const boardIndex = db.Boards.findIndex(board => board.id === boardId);
-  return db.Boards.pop(boardIndex, 1);
+  
+  db.Tasks.forEach((task, index) => {
+    if(task.boardId === boardId){
+      db.Tasks[index] = { ...task, boardId: null }
+    }
+  });
+
+  return db.Boards.splice(boardIndex, 1);
 }
 
 const removeTask = (taskId) => {
   const taskIndex = db.Tasks.findIndex(task => task.id === taskId);
-  return db.Tasks.pop(taskIndex, 1);
+  return db.Tasks.splice(taskIndex, 1);
 }
 //= ==============
 
