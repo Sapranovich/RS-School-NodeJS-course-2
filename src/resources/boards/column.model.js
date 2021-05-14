@@ -1,10 +1,10 @@
 const { v4: uuidv4 } = require('uuid');
 
 class Column {
-    constructor(index) {
+    constructor() {
       this.id = uuidv4();
-      this.title = `Column_${index}`;
-      this.order = index
+      this.title = `Column`;
+      this.order = 1
     }
 }
 

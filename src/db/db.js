@@ -30,8 +30,7 @@ db.Users.map((user, index) => {
 // ======================================================= получить все данные категории
 const getAllUsers = () => db.Users.filter((entity) => entity);
 const getAllBoards = () => db.Boards.filter((entity) => entity);
-const getAllTasks = (boardId) =>
-  db.Tasks.filter((task) => task.boardId === boardId);
+const getAllTasks = (boardId) => db.Tasks.filter((task) => task.boardId === boardId);
 // =====================================================================================
 
 // ======================================================= получить данные по id
@@ -62,8 +61,23 @@ const createTask = (body) => {
   const id = uuidv4();
   const newTask = new Task({ id, ...body });
   db.Tasks.push(newTask);
-  return db.Tasks.filter((task) => task.id === id);
+  return db.Tasks.filter((task) => task.id === id)[0];
 };
+
+const createBoard = (body) => {
+  const boardId = uuidv4();
+  const newBoard = {
+    id: boardId,
+    ...body,
+    columns: body.columns.map((column, index ) => ({
+        id: uuidv4(),
+        ...body.columns[index]
+      }))  
+    
+  }
+  db.Boards.push(new Board(newBoard));
+  return db.Boards.filter(board => board.id === boardId)[0];
+}
 
 // ======================================================================================
 
@@ -72,6 +86,11 @@ const removeUser = (userId) => {
   const userIndex = db.Users.findIndex(user => user.id === userId);
   return db.Users.pop(userIndex, 1);
 };
+
+const removeBoard = (boardId) => {
+  const boardIndex = db.Boards.findIndex(board => board.id === boardId);
+  return db.Boards.pop(boardIndex, 1);
+}
 //= ==============
 
 // ============= обновление
@@ -80,6 +99,12 @@ const updateUser = (userId, body) => {
   const userIndex = db.Users.findIndex(user => user.id === userId);
   db.Users[userIndex] = {id:userId, ...body};
   return db.Users[userIndex];
+}
+
+const updateBoard = (boardId, body) => {
+  const boardIndex = db.Boards.findIndex(board => board.id === boardId);
+  db.Boards[boardIndex] = {id:boardId, ...body};
+  return db.Boards[boardIndex];
 }
 
 module.exports = {
@@ -91,6 +116,9 @@ module.exports = {
   getTask,
   createUser,
   createTask,
+  createBoard,
   removeUser,
-  updateUser
+  removeBoard,
+  updateUser,
+  updateBoard
 };
