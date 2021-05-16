@@ -1,4 +1,4 @@
-const BD = require('../../db/db');
+const BD = require('../../common/db');
 
 const getAllUsers = async () => {
   const data = await BD.getAllUsers();

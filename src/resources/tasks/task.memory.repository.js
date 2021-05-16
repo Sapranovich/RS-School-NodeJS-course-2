@@ -1,4 +1,4 @@
-const BD = require('../../db/db');
+const BD = require('../../common/db');
 
 const getAllTasks = async (boardId) => {
   const data = await BD.getAllTasks(boardId);
