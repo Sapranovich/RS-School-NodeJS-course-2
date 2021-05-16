@@ -90,11 +90,13 @@ const removeUser = (userId) => {
 
 const removeBoard = (boardId) => {
   const boardIndex = db[BOARDS].findIndex(board => board.id === boardId);
-  db[TASKS].forEach((task, index) => {
-    if(task.boardId === boardId){
-      db[TASKS][index] = { ...task, boardId: null }
-    }
-  });
+  const updateTasks = db[TASKS].filter(task => task.boardId !== boardId);
+  db[TASKS] = updateTasks;
+  // db[TASKS].forEach((task, index) => {
+  //   if(task.boardId === boardId){
+  //     db[TASKS][index] = { ...task, boardId: null }
+  //   }
+  // });
   return db[BOARDS].splice(boardIndex, 1);
 }
 
