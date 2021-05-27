@@ -107,6 +107,7 @@ const removeTask = (taskId) => {
 
 // ===============================================================
 
+
 //  Обновление позиции из категории
 const updateUser = (userId, body) => {
   const userIndex = db[USERS].findIndex(user => user.id === userId);
