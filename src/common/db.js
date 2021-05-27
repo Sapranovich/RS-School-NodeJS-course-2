@@ -27,20 +27,49 @@ db[USERS].map((user, index) => {
 
 //  Получить все данные по определенной категории
 
+/**
+ * 
+ * @returns 
+ */
 const getAllUsers = () => db[USERS].filter((entity) => entity);
+/**
+ * 
+ * @returns 
+ */
 const getAllBoards = () => db[BOARDS].filter((entity) => entity);
+/**
+ * 
+ * @param {*} boardId 
+ * @returns 
+ */
 const getAllTasks = (boardId) => db[TASKS].filter((task) => task.boardId === boardId);
 // ===============================================================
 
 //  Получить данные по ID определенной категории
+/**
+ * 
+ * @param {*} userId 
+ * @returns 
+ */
 const getUser = (userId) => {
   const resault = db[USERS].filter((user) => user.id === userId)[0];
   return resault;
 };
+/**
+ * 
+ * @param {*} boardId 
+ * @returns 
+ */
 const getBoard = (boardId) => {
   const resault = db[BOARDS].filter((board) => board.id === boardId)[0];
   return resault;
 };
+/**
+ * 
+ * @param {*} boardId 
+ * @param {*} taskId 
+ * @returns 
+ */
 const getTask = (boardId, taskId) => {
   const resault = db[TASKS].filter((task) => task.boardId === boardId && task.id === taskId)[0];
   return resault;
@@ -48,18 +77,34 @@ const getTask = (boardId, taskId) => {
 // ===============================================================
 
 //  Добавление новой позиции в категорию
+/**
+ * 
+ * @param {*} body 
+ * @returns 
+ */
 const createUser = (body) => {
   const id = uuidv4();
   const newUser = new User({ id, ...body });
   db[USERS].push(newUser);
   return db[USERS].filter((user) => user.id === id)[0];
 };
+/**
+ * 
+ * @param {*} boardId 
+ * @param {*} body 
+ * @returns 
+ */
 const createTask = (boardId, body) => {
   const id = uuidv4();
   const newTask = new Task({ id, ...body, boardId });
   db[TASKS].push(newTask);
   return db[TASKS].filter((task) => task.id === id)[0];
 };
+/**
+ * 
+ * @param {*} body 
+ * @returns 
+ */
 const createBoard = (body) => {
   const boardId = uuidv4();
   const newBoard = {
@@ -78,6 +123,11 @@ const createBoard = (body) => {
 // ===============================================================
 
 //  Удаление позиции из категории
+/**
+ * 
+ * @param {*} userId 
+ * @returns 
+ */
 const removeUser = (userId) => {
   const userIndex = db[USERS].findIndex(user => user.id === userId);
   db[TASKS].forEach((task, index) => {
@@ -87,7 +137,11 @@ const removeUser = (userId) => {
   });
   return db[USERS].splice(userIndex, 1);
 };
-
+/**
+ * 
+ * @param {*} boardId 
+ * @returns 
+ */
 const removeBoard = (boardId) => {
   const boardIndex = db[BOARDS].findIndex(board => board.id === boardId);
   const updateTasks = db[TASKS].filter(task => task.boardId !== boardId);
@@ -99,7 +153,11 @@ const removeBoard = (boardId) => {
   // });
   return db[BOARDS].splice(boardIndex, 1);
 }
-
+/**
+ * 
+ * @param {*} taskId 
+ * @returns 
+ */
 const removeTask = (taskId) => {
   const taskIndex = db[TASKS].findIndex(task => task.id === taskId);
   return db[TASKS].splice(taskIndex, 1);
@@ -109,18 +167,35 @@ const removeTask = (taskId) => {
 
 
 //  Обновление позиции из категории
+
+/**
+ * 
+ * @param {*} userId 
+ * @param {*} body 
+ * @returns 
+ */
 const updateUser = (userId, body) => {
   const userIndex = db[USERS].findIndex(user => user.id === userId);
   db[USERS][userIndex] = {id:userId, ...body};
   return db[USERS][userIndex];
 }
-
+/**
+ * 
+ * @param {*} boardId 
+ * @param {*} body 
+ * @returns 
+ */
 const updateBoard = (boardId, body) => {
   const boardIndex = db[BOARDS].findIndex(board => board.id === boardId);
   db[BOARDS][boardIndex] = {id:boardId, ...body};
   return db[BOARDS][boardIndex];
 }
-
+/**
+ * 
+ * @param {*} taskId 
+ * @param {*} body 
+ * @returns 
+ */
 const updateTask = (taskId, body) => {
   const taskIndex = db[TASKS].findIndex(task => task.id === taskId);
   db[TASKS][taskIndex] = {
