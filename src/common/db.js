@@ -26,49 +26,104 @@ db[USERS].map((user, index) => {
 // ===============================================================
 
 //  Получить все данные по определенной категории
-
 /**
- * 
- * @returns 
+ * This function returns an array of all users
+ * @returns {Array} Empty array or an array of objects of the form {
+    "id": string,
+    "name": string,
+    "login": string
+  }
  */
 const getAllUsers = () => db[USERS].filter((entity) => entity);
+
+
 /**
- * 
- * @returns 
+ * This function returns an array of all boards
+ * @returns Empty array or an array of objects of the form {
+    "id": string,
+    "title": string,
+    "columns": [
+      {
+        "id": string,
+        "title": string,
+        "order": number
+      }
+    ]
+  }
  */
 const getAllBoards = () => db[BOARDS].filter((entity) => entity);
+
+
 /**
- * 
- * @param {*} boardId 
- * @returns 
+ * This function returns an array of all tasks current boart
+ * @param {string} boardId 
+ * @returns Empty array or an array of objects of the form {
+    "id": string,
+    "title": string,
+    "order": string,
+    "description": string,
+    "userId": string,
+    "boardId": boardId,
+    "columnId": string
+  }
  */
 const getAllTasks = (boardId) => db[TASKS].filter((task) => task.boardId === boardId);
 // ===============================================================
 
+
+
 //  Получить данные по ID определенной категории
+
+
 /**
- * 
- * @param {*} userId 
- * @returns 
+ * This function returns a object user by id
+ * @param {string} userId 
+ * @returns object of the form {
+    "id": userId,
+    "name": string,
+    "login": string
+  }
  */
 const getUser = (userId) => {
   const resault = db[USERS].filter((user) => user.id === userId)[0];
   return resault;
 };
+
+
 /**
- * 
- * @param {*} boardId 
- * @returns 
+ * This function returns a object board by id
+ * @param {string} boardId 
+ * @returns object of the form {
+    "id": string,
+    "title": string,
+    "columns": [
+      {
+        "id": string,
+        "title": string,
+        "order": number
+      }
+    ]
+  }
  */
 const getBoard = (boardId) => {
   const resault = db[BOARDS].filter((board) => board.id === boardId)[0];
   return resault;
 };
+
+
 /**
- * 
- * @param {*} boardId 
- * @param {*} taskId 
- * @returns 
+ * This function returns a object task by id
+ * @param {string} boardId 
+ * @param {string} taskId 
+ * @returns  object of the form {
+    "id": string,
+    "title": string,
+    "order": string,
+    "description": string,
+    "userId": string,
+    "boardId": boardId,
+    "columnId": string
+  }
  */
 const getTask = (boardId, taskId) => {
   const resault = db[TASKS].filter((task) => task.boardId === boardId && task.id === taskId)[0];
@@ -78,21 +133,45 @@ const getTask = (boardId, taskId) => {
 
 //  Добавление новой позиции в категорию
 /**
- * 
- * @param {*} body 
- * @returns 
+ * This function create new user and returns object created user
+ * @param {{
+ * id: userId, 
+ * name: string, 
+ * login: string, 
+ * password: string
+ * }} body 
+ * @returns object of the form {
+    "id": string,
+    "name": string,
+    "login": string
+  } or undefined
  */
+
 const createUser = (body) => {
   const id = uuidv4();
   const newUser = new User({ id, ...body });
   db[USERS].push(newUser);
   return db[USERS].filter((user) => user.id === id)[0];
 };
+
 /**
- * 
- * @param {*} boardId 
- * @param {*} body 
- * @returns 
+ * This function create new task and returns object created task
+ * @param {string} boardId 
+ * @param {{"title": string,
+ * "order": string, 
+ * "description": string, 
+ * "userId": string,
+ * "boardId": boardId,
+ * "columnId": string}} body 
+ * @returns object of the form {
+    "id": string,
+    "title": string,
+    "order": string,
+    "description": string,
+    "userId": string,
+    "boardId": boardId,
+    "columnId": string
+  }
  */
 const createTask = (boardId, body) => {
   const id = uuidv4();
@@ -100,10 +179,23 @@ const createTask = (boardId, body) => {
   db[TASKS].push(newTask);
   return db[TASKS].filter((task) => task.id === id)[0];
 };
+
 /**
- * 
- * @param {*} body 
- * @returns 
+ * This function create new board and returns object created board
+ * @param {{"title": string,
+ * "columns": [ {"title": string, "order": number} ]
+ * }} body 
+ * @returns object of the form {
+    "id": string,
+    "title": string,
+    "columns": [
+      {
+        "id": string,
+        "title": string,
+        "order": number
+      }
+    ]
+  }
  */
 const createBoard = (body) => {
   const boardId = uuidv4();
@@ -124,9 +216,13 @@ const createBoard = (body) => {
 
 //  Удаление позиции из категории
 /**
- * 
- * @param {*} userId 
- * @returns 
+ * This function delete object user and returns object  deleted user. 
+ * @param {string} userId 
+ * @returns object of the form {
+    "id": string,
+    "name": string,
+    "login": string
+  }
  */
 const removeUser = (userId) => {
   const userIndex = db[USERS].findIndex(user => user.id === userId);
@@ -137,10 +233,22 @@ const removeUser = (userId) => {
   });
   return db[USERS].splice(userIndex, 1);
 };
+
+
 /**
- * 
- * @param {*} boardId 
- * @returns 
+ * This function delete object board and returns object deleted board
+ * @param {string} boardId 
+ * @returns object of the form {
+    "id": string,
+    "title": string,
+    "columns": [
+      {
+        "id": string,
+        "title": string,
+        "order": number
+      }
+    ]
+  }
  */
 const removeBoard = (boardId) => {
   const boardIndex = db[BOARDS].findIndex(board => board.id === boardId);
@@ -154,9 +262,17 @@ const removeBoard = (boardId) => {
   return db[BOARDS].splice(boardIndex, 1);
 }
 /**
- * 
- * @param {*} taskId 
- * @returns 
+ * This function delete object task and returns object deleted task
+ * @param {string} taskId 
+ * @returns object of the form {
+    "id": string,
+    "title": string,
+    "order": string,
+    "description": string,
+    "userId": string,
+    "boardId": boardId,
+    "columnId": string
+  }
  */
 const removeTask = (taskId) => {
   const taskIndex = db[TASKS].findIndex(task => task.id === taskId);
@@ -169,10 +285,19 @@ const removeTask = (taskId) => {
 //  Обновление позиции из категории
 
 /**
- * 
- * @param {*} userId 
- * @param {*} body 
- * @returns 
+ * This function update data user by id and returns object updated user
+ * @param {string} userId 
+ * @param {{
+ * id: userId, 
+ * name: string, 
+ * login: string, 
+ * password: string
+ * }} body 
+ * @returns object of the form {
+    "id": string,
+    "name": string,
+    "login": string
+  }
  */
 const updateUser = (userId, body) => {
   const userIndex = db[USERS].findIndex(user => user.id === userId);
@@ -180,21 +305,47 @@ const updateUser = (userId, body) => {
   return db[USERS][userIndex];
 }
 /**
- * 
- * @param {*} boardId 
- * @param {*} body 
- * @returns 
+ * This function update data board by id and returns object updated board
+ * @param {string} boardId 
+ * @param {{"title": string,
+ * "columns": [ {id: string, "title": string, "order": number} ]
+ * }} body
+ * @returns object of the form {
+    "id": string,
+    "title": string,
+    "columns": [
+      {
+        "id": string,
+        "title": string,
+        "order": number
+      }
+    ]
+  }
  */
 const updateBoard = (boardId, body) => {
   const boardIndex = db[BOARDS].findIndex(board => board.id === boardId);
   db[BOARDS][boardIndex] = {id:boardId, ...body};
   return db[BOARDS][boardIndex];
 }
+
 /**
- * 
- * @param {*} taskId 
- * @param {*} body 
- * @returns 
+ * This function update data task by id and returns object updated task
+ * @param {string} taskId 
+* @param {{"title": string,
+ * "order": string, 
+ * "description": string, 
+ * "userId": string,
+ * "boardId": boardId,
+ * "columnId": string}} body 
+ * @returns object of the form {
+    "id": string,
+    "title": string,
+    "order": string,
+    "description": string,
+    "userId": string,
+    "boardId": boardId,
+    "columnId": string
+  }
  */
 const updateTask = (taskId, body) => {
   const taskIndex = db[TASKS].findIndex(task => task.id === taskId);
