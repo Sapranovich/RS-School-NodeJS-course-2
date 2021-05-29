@@ -1,6 +1,19 @@
 const { v4: uuidv4 } = require('uuid');
 
+/**
+ * Task class.
+ */
 class Task {
+      /**
+   * Task constructor.
+   * @param {string} id - instance id.
+   * @param {string} title - task name.
+   * @param {string} order -  task order.
+   * @param {string} description - task description.
+   * @param {string} userId - user id created this task.
+   * @param {string} boardId - board id where the task is located.
+   * @param {string} columnId - column id.
+   */
   constructor({
     id = uuidv4(),
     title = 'Task',
