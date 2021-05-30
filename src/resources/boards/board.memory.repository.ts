@@ -12,16 +12,11 @@ const getBoard = async (boardId:string) => boards.filter((board) => board.id ===
 
 const createBoard = async (body:IBoard) => {
   const boardId:string = uuidv4();
-  // const newBoard:IBoard = {
-  //   id: boardId,
-  //   ...body,
-  //   columns: body.columns.map((column, index ) => ({
-  //       id: uuidv4(),
-  //       ...body.columns[index]
-  //     }))  
-    
-  // }
-  boards.push(new Board({...body}));
+  const newBoard:IBoard = {
+    id: boardId,
+    ...body  
+  }
+  boards.push(new Board({...newBoard}));
   return boards.filter(board => board.id === boardId)[0];
 }
 
@@ -32,7 +27,7 @@ const removeBoard = async (boardId:string) => {
   tasks.forEach((task:ITask, index:number) => {
     if(task.boardId === boardId){
       console.log('tasks[index]', tasks[index])
-      // tasks[index].boardId = undefined
+      tasks[index]!.boardId = undefined
     }
   });
   return boards.splice(boardIndex, 1);
