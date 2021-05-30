@@ -26,6 +26,6 @@ export class Board implements IBoard {
   constructor({ id = uuidv4(), title = 'RS School', columns = new Array<IColumn>() } = {}) {
     this.id = id;
     this.title = title;
-    this.columns = columns.map((item: IColumn) => new Column(item));
+    this.columns = [...columns.map((item: IColumn) => new Column(item))];
   }
 }
