@@ -6,38 +6,34 @@
     "jest": true,
     "node": true
   },
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint/eslint-plugin"
-  ],
   "parserOptions": {
     "sourceType": "module",
-    "project": "./tsconfig.json",
-    "ecmaVersion": 2020,
+    "ecmaVersion": 2021,
     "ecmaFeatures": {
       "impliedStrict": true
-    }
+    },
+    "project": "./tsconfig.json"
   },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "settings": {
     "noInlineConfig": true,
-    "allowKeywords": true
+    "node": {
+      "tryExtensions": [".js", ".json", ".ts", ".d.ts"]
+    }
   },
   "extends": [
     "eslint:recommended",
     "plugin:node/recommended",
+    "airbnb-base",
     "airbnb-typescript/base",
-    "prettier",
-    "plugin:import/typescript"
+    "prettier"
   ],
   "rules": {
     "import/extensions": "off",
     "linebreak-style": "off",
     "node/no-unsupported-features/es-syntax": "off",
     "no-underscore-dangle": "off",
-    "import/prefer-default-export": "off",
-    "dot-notation": [0],
-    "node/no-missing-import": ["error", {
-      "tryExtensions": [".js", ".json", ".ts"]
-    }]
+    "import/prefer-default-export": "off"
   }
 }
