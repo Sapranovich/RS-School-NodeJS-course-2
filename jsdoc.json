@@ -4,9 +4,7 @@
         "./src/resources/users",
         "./src/resources/boards",
         "./src/resources/tasks",
-        "./src/resources/columns",
-        "./src/resources/common/db.js"
-      ],
+        "./src/resources/columns"      ],
       "exclude": [],
       "includePattern": ".+\\.js(doc|x)?$",
       "excludePattern": "(^|\\/|\\\\)_"
