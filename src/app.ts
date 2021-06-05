@@ -22,7 +22,28 @@ app.use('/', (req, res, next) => {
   next();
 });
 
+
+// catch errors: uncaughtException
+process.on('uncaughtException', error => {
+  console.log('321',error.message)
+  setTimeout(() => {
+    throw new Error(error.message);
+  }, 1000);
+});
+
+// catch errors: unhandledRejection
+process.on('unhandledRejection', (reason: any) => {
+  console.log('123',reason.message)
+  setTimeout(() => {
+    throw new Error(reason.message);
+  }, 1000);
+});
+
+
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
+
+Promise.reject(Error('Oops!'))
+throw Error('Oops!')
 
 export { app };
