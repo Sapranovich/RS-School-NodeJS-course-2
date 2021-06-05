@@ -6,6 +6,7 @@ import * as userRouter from './resources/users/user.router';
 import * as taskRouter from './resources/tasks/task.router';
 import * as boardRouter from './resources/boards/board.router';
 
+import { errorHandler } from './common/errorHandler';
 import {logger, logInfo} from './common/logger';
 
 const app = express();
@@ -43,6 +44,7 @@ process.on('unhandledRejection', (reason: any) => {
 
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
+app.use(errorHandler);
 app.use(logInfo);
 
 export { app };
