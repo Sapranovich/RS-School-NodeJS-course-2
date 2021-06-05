@@ -2,10 +2,11 @@ import express from 'express';
 import swaggerUI from 'swagger-ui-express';
 import path from 'path';
 import YAML from 'yamljs';
-
 import * as userRouter from './resources/users/user.router';
 import * as taskRouter from './resources/tasks/task.router';
 import * as boardRouter from './resources/boards/board.router';
+
+import {logger, logInfo} from './common/logger';
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
@@ -25,7 +26,7 @@ app.use('/', (req, res, next) => {
 
 // catch errors: uncaughtException
 process.on('uncaughtException', error => {
-  console.log('321',error.message)
+  logger.log('error', `uncaughtException: ${error.message}`);
   setTimeout(() => {
     throw new Error(error.message);
   }, 1000);
@@ -33,7 +34,7 @@ process.on('uncaughtException', error => {
 
 // catch errors: unhandledRejection
 process.on('unhandledRejection', (reason: any) => {
-  console.log('123',reason.message)
+  logger.log('error', `unhandledRejection: ${reason.message}`);
   setTimeout(() => {
     throw new Error(reason.message);
   }, 1000);
@@ -42,8 +43,6 @@ process.on('unhandledRejection', (reason: any) => {
 
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
-
-Promise.reject(Error('Oops!'))
-throw Error('Oops!')
+app.use(logInfo);
 
 export { app };
