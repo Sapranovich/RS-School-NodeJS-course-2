@@ -16,13 +16,12 @@ const logger = createLogger({
   format: format.json(),
   transports: [
     new transports.File({ filename: 'error.log', level: 'error' }),
-    new transports.File({ filename: 'info.log' })
+    new transports.File({ filename: 'info.log' }),
+    new transports.Console()
   ]
 });
-logger.add(new transports.Console());
 
 const logInfo = (req: any) => {
-  console.log('asdadasdsdas', req)
   logger.info(JSON.stringify(new ReqInfo(req.url, req.params, req.body)));
 };
 
