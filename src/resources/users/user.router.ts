@@ -2,6 +2,7 @@ import express from 'express';
 import { User, } from './user.model';
 import * as usersService from './user.service';
 import { catchErrors } from '../../common/errorHandler';
+
 export const router = express.Router();
 
 router.route('/').get(catchErrors(async (_req: express.Request, res: express.Response) => {

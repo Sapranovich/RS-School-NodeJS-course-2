@@ -2,8 +2,11 @@ import { createLogger, format, transports } from 'winston';
 
 class ReqInfo {
   url: any
+
   params:any
+
   body:any
+
   constructor(url:any, params:any, body:any) {
     this.url = url;
     this.params = params;

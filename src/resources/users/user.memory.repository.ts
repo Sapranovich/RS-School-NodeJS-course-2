@@ -4,18 +4,15 @@ import { IUser, User } from './user.model';
 
 const users: IUser[] = [];
 
-const getAllUsers = async () => {
-  return users.filter((entity) => entity)
+const getAllUsers = async () => users.filter((entity) => entity);
 
-};
-
-const getUser = async (userId: string) => {
-  return users.filter((user: IUser) => user.id === userId)[0]
+const getUser = async (userId: string) => 
+   users.filter((user: IUser) => user.id === userId)[0]
   // if (!user) {
   //   throw new Error(`User with id ${userId} was not found`);
   // }
   // return user;
-}
+
 
 const createUser = async (body: IUser) => {
   const id = uuidv4();

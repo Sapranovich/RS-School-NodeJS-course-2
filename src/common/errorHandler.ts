@@ -12,7 +12,8 @@ const errorHandler = async (err:any, _req:any, res:any, next:any) => {
 
 const catchErrors = (fn:Function) => async (req:any, res:any, next:any) => {
   try {
-    return await fn(req, res, next);
+    const resault = await fn(req, res, next);
+    return resault
   } catch (e) {
     return next(e);
   }
