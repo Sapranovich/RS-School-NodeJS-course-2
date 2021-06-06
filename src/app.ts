@@ -45,7 +45,6 @@ process.on('unhandledRejection', (reason: any) => {
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
 app.use(errorHandler);
-
 app.use(logInfo);
 
 app.use((err:any, _req:any, res:any, next:any) => {
