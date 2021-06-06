@@ -32,8 +32,9 @@ const logger = createLogger({
   ]
 });
 
-const logInfo = (req:any) => {
+const logInfo = (req:any, _res:any, next:any) => {
   logger.info(JSON.stringify(new ReqInfo(req.url, req.params, req.body)));
+  next();
 };
 
 export { logger, logInfo };

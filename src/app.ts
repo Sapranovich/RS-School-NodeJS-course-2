@@ -41,11 +41,11 @@ process.on('unhandledRejection', (reason: any) => {
   // }, 1000);
 });
 
+app.use(logInfo);
 
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
 app.use(errorHandler);
-app.use(logInfo);
 
 app.use((err:any, _req:any, res:any, next:any) => {
   console.error(err.stack);

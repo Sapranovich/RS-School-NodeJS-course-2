@@ -1,39 +1,3 @@
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
@@ -50,14 +14,4 @@
 {"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
-{"message":"      unhandledRejection: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
