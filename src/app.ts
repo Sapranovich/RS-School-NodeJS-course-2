@@ -6,7 +6,7 @@ import * as userRouter from './resources/users/user.router';
 import * as taskRouter from './resources/tasks/task.router';
 import * as boardRouter from './resources/boards/board.router';
 
-import { errorHandler } from './common/errorHandler';
+// import { errorHandler } from './common/errorHandler';
 import {logger, logInfo} from './common/logger';
 
 const app = express();
@@ -27,24 +27,36 @@ app.use('/', (req, res, next) => {
 
 // catch errors: uncaughtException
 process.on('uncaughtException', error => {
-  logger.log('error', `uncaughtException: ${error.message}`);
-  setTimeout(() => {
-    throw new Error(error.message);
-  }, 1000);
+  logger.error(`uncaughtException: ${error.message}`);
+  // setTimeout(() => {
+  //   throw new Error(error.message);
+  // }, 1000);
 });
 
 // catch errors: unhandledRejection
 process.on('unhandledRejection', (reason: any) => {
-  logger.log('error', `unhandledRejection: ${reason.message}`);
-  setTimeout(() => {
-    throw new Error(reason.message);
-  }, 1000);
+  logger.error(`unhandledRejection: ${reason.toString()}`);
+  // setTimeout(() => {
+  //   throw new Error(reason.message);
+  // }, 1000);
 });
 
 
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
-app.use(errorHandler);
+// app.use(errorHandler);
+
 app.use(logInfo);
+
+app.use((err:any, _req:any, res:any, next:any) => {
+  console.error(err.stack);
+  res.status(500).send('Internal Server Error');
+  next();
+});
+
+// Promise.reject(Error('Pd'));
+// throw Error('Os');
+
+
 
 export { app };
