@@ -11,7 +11,7 @@ services:
       - 5432:5432
 
   node-web-app:
-    image: node-web-app2222
+    image: node-js-task6
     restart: always
     ports:
       - 4000:4000

@@ -10,7 +10,6 @@
   "main": "src/server.js",
   "scripts": {
     "start": "nodemon src/server.ts",
-    "gavno": "tsc src/server.ts",
     "build": "tsc",
     "doc": "jsdoc -c jsdoc.json",
     "lint": "eslint --ext .js,.ts --fix src/",
