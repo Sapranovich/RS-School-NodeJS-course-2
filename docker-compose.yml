@@ -3,15 +3,31 @@ version: '3.1'
 
 services:
   db:
-    image: postgres
+    image: ${POSTGRES_IMAGE}
     restart: always
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - docker_network 
     ports:
-      - 5432:5432
+      - ${DB_PORT}:${DB_PORT}
+    volumes: 
+      - db_volume:/var/lib/postgresql/data
 
   node-web-app:
-    image: node-js-task6
+    image: ${NODE_WEB_APP_IMAGE}
     restart: always
+    networks:
+      - docker_network 
     ports:
-      - 4000:4000
+      - ${PORT}:${PORT}
+    volumes: 
+      - ./build:/build
+      - node-web-app_volume:/logs
+volumes: 
+  db_volume:
+  node-web-app_volume:
+
+networks:   
+  docker_network:
+    driver: bridge
