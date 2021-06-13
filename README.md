@@ -73,4 +73,6 @@ For more information, visit: https://code.visualstudio.com/docs/editor/debugging
 
 ### Running application in DOCKER
 
-Run in terminal ##docker-compose up##
+```
+docker-compose up
+```
