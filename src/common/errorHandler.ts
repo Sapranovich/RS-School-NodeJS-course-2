@@ -1,21 +1,22 @@
-import { INTERNAL_SERVER_ERROR, getStatusText } from 'http-status-codes'
+import { ErrorRequestHandler } from 'express';
+import { INTERNAL_SERVER_ERROR, getStatusText } from 'http-status-codes';
 import { logger } from './logger';
 
-const errorHandler = async (err:any, _req:any, res:any, next:any) => {
+const errorHandler: ErrorRequestHandler =  (err, _req, res, next) => {
   if (err) {
     const status = err.status ? err.status : INTERNAL_SERVER_ERROR;
     logger.error(JSON.stringify({ status, message: getStatusText(status) }));
-    await res.status(status).json({ message: getStatusText(status) });
+    res.status(status).json({ message: getStatusText(status) });
   }
   next();
 };
 
-const catchErrors = (fn:Function) => async (req:any, res:any, next:any) => {
+const catchErrors = (fn:Function): ErrorRequestHandler => async (req, res, next) => {
   try {
     const resault = await fn(req, res, next);
-    return resault
+    return resault;
   } catch (e) {
-    return next(e);
+    return e;
   }
 };
 

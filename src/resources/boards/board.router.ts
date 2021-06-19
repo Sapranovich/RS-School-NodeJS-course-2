@@ -1,4 +1,5 @@
 import express from 'express';
+import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { catchErrors } from '../../common/errorHandler';
 // import {User,} from './user.model';
 import * as boardService from './board.service';
@@ -8,11 +9,9 @@ export const router = express.Router();
 router.route('/').get(catchErrors(async (_req: express.Request, res: express.Response) => {
   const boards = await boardService.getAllBoards();
   if (boards) {
-    res.status(200).json(boards);
+    res.status(StatusCodes.OK).json(boards);
   } else {
-    const error: any = new Error();
-    error.status = 404;
-    throw error;
+    res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
   }
 }))
 
@@ -21,22 +20,18 @@ router.route('/:boardId').get(catchErrors(async (req: express.Request, res: expr
   const board = await boardService.getBoard(boardId!);
 
   if (board) {
-    res.status(200).json(board);
+    res.status(StatusCodes.OK).json(board);
   } else {
-    const error:any= new Error();
-    error.status = 404;
-    throw error;
+    res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
   }
 }))
 
 router.route('/').post(catchErrors(async (req: express.Request, res: express.Response) => {
   const board = await boardService.createBoard(req.body);
   if (board) {
-    res.status(201).json(board)
+    res.status(StatusCodes.CREATED).json(board)
   } else {
-    const error:any= new Error();
-    error.status = 404;
-    throw error;
+    res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
   }
 }))
 
@@ -45,21 +40,17 @@ router.route('/:boardId').put(catchErrors(async (req: express.Request, res: expr
   const board = await boardService.updateBoard(boardId!, body);
 
   if (board) {
-    res.status(200).json(board);
+    res.status(StatusCodes.OK).json(board);
   } else {
-    const error:any= new Error();
-    error.status = 404;
-    throw error;
+    res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
   }
 }))
 
 router.route('/:boardId').delete(catchErrors(async (req: express.Request, res: express.Response) => {
   const { boardId } = req.params;
   if (await boardService.removeBoard(boardId!)) {
-    res.status(204).json()
+    res.status(StatusCodes.NO_CONTENT).json()
   } else {
-    const error:any= new Error();
-    error.status = 404;
-    throw error;
+    res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
   }
 }))
