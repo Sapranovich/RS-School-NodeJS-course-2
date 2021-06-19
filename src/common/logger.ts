@@ -1,18 +1,5 @@
+import express from 'express';
 import { createLogger, format, transports } from 'winston';
-
-class ReqInfo {
-  url: any
-
-  params:any
-
-  body:any
-
-  constructor(url:any, params:any, body:any) {
-    this.url = url;
-    this.params = params;
-    this.body = body;
-  }
-}
 
 const logger = createLogger({
   level: 'info',
@@ -32,8 +19,12 @@ const logger = createLogger({
   ]
 });
 
-const logInfo = (req:any, _res:any, next:any) => {
-  logger.info(JSON.stringify(new ReqInfo(req.url, req.params, req.body)));
+const logInfo = (req: express.Request, _res: express.Response, next:express.NextFunction) => {
+  logger.info(JSON.stringify({
+    url: req.url,
+    params: req.params,
+    body: req.body
+  }));
   next();
 };
 
