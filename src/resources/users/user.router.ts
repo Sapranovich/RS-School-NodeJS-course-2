@@ -9,7 +9,7 @@ export const router = express.Router();
 router.route('/').get(catchErrors(async (_req: express.Request, res: express.Response) => {
   const users = await usersService.getAllUsers();
   if (users) {
-    res.status(StatusCodes.OK).(users.map(User.toResponse));
+    res.status(StatusCodes.OK).json(users.map(User.toResponse));
   } else {
     res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
   }
