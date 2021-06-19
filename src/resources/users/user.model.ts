@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { PrimaryColumn, Column, BaseEntity } from 'typeorm';
 
 export interface IUser {
   id?: string,
@@ -10,14 +11,18 @@ export interface IUser {
  * User class.
  */
 
-export class User implements IUser{
-  id: string;
+export class User extends BaseEntity{
+  @PrimaryColumn()
+    id: string;
 
-  login: string;
+    @Column()
+    name: string;
 
-  name: string;
+    @Column()
+    login: string;
 
-  password: string;
+    @Column()
+    password: string;
     /**
    * User constructor.
    * @param {string} id - instance id.
@@ -30,8 +35,9 @@ export class User implements IUser{
     id = uuidv4(),
     name = 'USER_NAME',
     login = 'user_login',
-    password = 'P@55w0rd'
+    password = '123123'
   } = {}) {
+    super();
     this.id = id;
     this.name = name;
     this.login = login;
