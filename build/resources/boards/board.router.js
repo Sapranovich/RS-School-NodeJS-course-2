@@ -24,6 +24,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
+const http_status_codes_1 = require("http-status-codes");
 const errorHandler_1 = require("../../common/errorHandler");
 // import {User,} from './user.model';
 const boardService = __importStar(require("./board.service"));
@@ -31,57 +32,47 @@ exports.router = express_1.default.Router();
 exports.router.route('/').get(errorHandler_1.catchErrors(async (_req, res) => {
     const boards = await boardService.getAllBoards();
     if (boards) {
-        res.status(200).json(boards);
+        res.status(http_status_codes_1.StatusCodes.OK).json(boards);
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));
 exports.router.route('/:boardId').get(errorHandler_1.catchErrors(async (req, res) => {
     const { boardId } = req.params;
     const board = await boardService.getBoard(boardId);
     if (board) {
-        res.status(200).json(board);
+        res.status(http_status_codes_1.StatusCodes.OK).json(board);
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));
 exports.router.route('/').post(errorHandler_1.catchErrors(async (req, res) => {
     const board = await boardService.createBoard(req.body);
     if (board) {
-        res.status(201).json(board);
+        res.status(http_status_codes_1.StatusCodes.CREATED).json(board);
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));
 exports.router.route('/:boardId').put(errorHandler_1.catchErrors(async (req, res) => {
     const { body, params: { boardId } } = req;
     const board = await boardService.updateBoard(boardId, body);
     if (board) {
-        res.status(200).json(board);
+        res.status(http_status_codes_1.StatusCodes.OK).json(board);
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));
 exports.router.route('/:boardId').delete(errorHandler_1.catchErrors(async (req, res) => {
     const { boardId } = req.params;
     if (await boardService.removeBoard(boardId)) {
-        res.status(204).json();
+        res.status(http_status_codes_1.StatusCodes.NO_CONTENT).json();
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));

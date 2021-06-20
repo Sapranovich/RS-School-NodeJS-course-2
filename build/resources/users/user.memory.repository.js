@@ -1,39 +1,43 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUser = exports.removeUser = exports.createUser = exports.getUser = exports.getAllUsers = void 0;
-const uuid_1 = require("uuid");
+// import { v4 as uuidv4 } from 'uuid';
 const user_model_1 = require("./user.model");
-// const BD = require('../../common/db');
-const users = [];
-const getAllUsers = async () => users.filter((entity) => entity);
+const getAllUsers = async () => user_model_1.User.find();
 exports.getAllUsers = getAllUsers;
-const getUser = async (userId) => users.filter((user) => user.id === userId)[0];
+const getUser = async (userId) => {
+    const user = await user_model_1.User.findOne(userId);
+    if (!user) {
+        throw new Error('User not found');
+    }
+    return user;
+};
 exports.getUser = getUser;
-// if (!user) {
-//   throw new Error(`User with id ${userId} was not found`);
-// }
-// return user;
 const createUser = async (body) => {
-    const id = uuid_1.v4();
-    const newUser = new user_model_1.User({ id, ...body });
-    users.push(newUser);
-    return users.filter((user) => user.id === id)[0];
+    const user = await new user_model_1.User(body);
+    await user.save();
+    return user;
 };
 exports.createUser = createUser;
 const removeUser = async (userId) => {
-    const userIndex = users.findIndex((user) => user.id === userId);
-    // db.Tasks.forEach((task, index) => {
-    //   if(task.userId === userId){
-    //     db.Tasks[index] = { ...task, userId: null }
-    //   }
-    // });
-    return users.splice(userIndex, 1);
+    console.log(userId);
+    return true;
+    // const tasks = await tasksRepo.getAll();
+    // if (tasks.length) {
+    //     tasks.forEach(async (task: Task) => {
+    //         if (task.userId === id) {
+    //             await tasksRepo.update(task.id, { ...task, userId: null });
+    //         }
+    //     });
+    // }
 };
 exports.removeUser = removeUser;
 const updateUser = async (userId, body) => {
-    const userIndex = users.findIndex((user) => user.id === userId);
-    users[userIndex] = { id: userId, ...body };
-    return users[userIndex];
+    const user = await user_model_1.User.findOne(userId);
+    if (!user) {
+        throw new Error('User not found');
+    }
+    await user_model_1.User.update(userId, body);
+    return user_model_1.User.findOne(userId);
 };
 exports.updateUser = updateUser;
-exports.default = users;

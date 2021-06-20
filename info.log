@@ -418,3 +418,5 @@
 {"message":"        {\"url\":\"/boards/9f94f169-9251-4bcb-bea9-fafe586425f5/tasks/877b830c-3100-4833-a41b-10e2ab40306e\",\"params\":{},\"body\":{}}","level":"\u001b[32m\u001b[32m\u001b[32minfo\u001b[32m\u001b[32m\u001b[39m"}
 {"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"        {\"url\":\"/boards/9f94f169-9251-4bcb-bea9-fafe586425f5\",\"params\":{},\"body\":{}}","level":"\u001b[32m\u001b[32m\u001b[32minfo\u001b[32m\u001b[32m\u001b[39m"}
+{"message":"      unhandledRejection - Error: connect ECONNREFUSED 127.0.0.1:5432","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}

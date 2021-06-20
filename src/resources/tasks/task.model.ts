@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import {Entity, Column, PrimaryColumn, BaseEntity} from 'typeorm';
 
 export interface ITask {
   id?: string,
@@ -12,20 +13,28 @@ export interface ITask {
 /**
  * Task class.
  */
-export class Task implements ITask{
+@Entity({name: 'Task'})
+export class Task extends BaseEntity{
+  @PrimaryColumn('varchar', {length: 100})
   id: string;
 
+  @Column()
   title: string;
 
+  @Column()
   order: number;
 
+  @Column()
   description: string;
 
-  boardId: string;
+  @Column()
+  boardId: string | null;
 
+  @Column()
   columnId: string;
 
-  userId: string|null;
+  @Column()
+  userId: string | null;
 
       /**
    * Task constructor.
@@ -46,6 +55,7 @@ export class Task implements ITask{
     boardId = 'boardId',
     columnId = 'columnId'
   } = {}) {
+    super();
     this.id = id;
     this.title = title;
     this.order = order;

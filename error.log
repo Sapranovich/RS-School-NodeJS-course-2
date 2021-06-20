@@ -83,3 +83,5 @@
 {"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      {\"status\":404,\"message\":\"Not Found\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: connect ECONNREFUSED 127.0.0.1:5432","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}

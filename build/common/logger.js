@@ -2,13 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logInfo = exports.logger = void 0;
 const winston_1 = require("winston");
-class ReqInfo {
-    constructor(url, params, body) {
-        this.url = url;
-        this.params = params;
-        this.body = body;
-    }
-}
 const logger = winston_1.createLogger({
     level: 'info',
     format: winston_1.format.combine(winston_1.format.cli()),
@@ -28,7 +21,11 @@ const logger = winston_1.createLogger({
 });
 exports.logger = logger;
 const logInfo = (req, _res, next) => {
-    logger.info(JSON.stringify(new ReqInfo(req.url, req.params, req.body)));
+    logger.info(JSON.stringify({
+        url: req.url,
+        params: req.params,
+        body: req.body
+    }));
     next();
 };
 exports.logInfo = logInfo;

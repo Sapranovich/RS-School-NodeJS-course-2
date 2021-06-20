@@ -45,25 +45,18 @@ app.use('/', (req, res, next) => {
     next();
 });
 // catch errors: uncaughtException
-process.on('uncaughtException', error => {
-    logger_1.logger.error(`uncaughtException: ${error.message}`);
-    // setTimeout(() => {
-    //   throw new Error(error.message);
-    // }, 1000);
+process.on('uncaughtException', err => {
+    logger_1.logger.error(`uncaughtException: ${err.message}`);
 });
 // catch errors: unhandledRejection
-process.on('unhandledRejection', (reason) => {
-    logger_1.logger.error(`unhandledRejection: ${reason.toString()}`);
-    // setTimeout(() => {
-    //   throw new Error(reason.message);
-    // }, 1000);
+process.on('unhandledRejection', (err) => {
+    let errorMessage = 'unhandledRejection - ';
+    if (err) {
+        errorMessage += err.toString();
+    }
+    logger_1.logger.error(errorMessage);
 });
 app.use(logger_1.logInfo);
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
 app.use(errorHandler_1.errorHandler);
-app.use((err, _req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Internal Server Error');
-    next();
-});

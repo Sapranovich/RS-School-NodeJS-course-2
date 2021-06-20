@@ -25,53 +25,46 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
 const user_model_1 = require("./user.model");
+const http_status_codes_1 = require("http-status-codes");
 const usersService = __importStar(require("./user.service"));
 const errorHandler_1 = require("../../common/errorHandler");
 exports.router = express_1.default.Router();
 exports.router.route('/').get(errorHandler_1.catchErrors(async (_req, res) => {
     const users = await usersService.getAllUsers();
     if (users) {
-        res.json(users.map(user_model_1.User.toResponse));
+        res.status(http_status_codes_1.StatusCodes.OK).json(users.map(user_model_1.User.toResponse));
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));
 exports.router.route('/:userId').get(errorHandler_1.catchErrors(async (req, res) => {
     const { userId } = req.params;
     const user = await usersService.getUser(userId);
     if (user) {
-        res.status(200).json(user_model_1.User.toResponse(user));
+        res.status(http_status_codes_1.StatusCodes.OK).json(user_model_1.User.toResponse(user));
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));
 exports.router.route('/').post(errorHandler_1.catchErrors(async (req, res) => {
     const user = await usersService.createUser(req.body);
     if (user) {
-        res.status(201).json(user_model_1.User.toResponse(user));
+        res.status(http_status_codes_1.StatusCodes.CREATED).json(user_model_1.User.toResponse(user));
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));
 exports.router.route('/:userId').put(errorHandler_1.catchErrors(async (req, res) => {
     const { body, params: { userId } } = req;
     const user = await usersService.updateUser(userId, body);
     if (user) {
-        res.status(200).json(user_model_1.User.toResponse(user));
+        res.status(http_status_codes_1.StatusCodes.OK).json(user_model_1.User.toResponse(user));
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));
 exports.router.route('/:userId').delete(errorHandler_1.catchErrors(async (req, res) => {
@@ -79,11 +72,9 @@ exports.router.route('/:userId').delete(errorHandler_1.catchErrors(async (req, r
     if (await usersService.removeUser(userId))
         res.status(204).json();
     if (await usersService.removeUser(userId)) {
-        res.status(204).json();
+        res.status(http_status_codes_1.StatusCodes.NO_CONTENT).json();
     }
     else {
-        const error = new Error();
-        error.status = 404;
-        throw error;
+        res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
     }
 }));

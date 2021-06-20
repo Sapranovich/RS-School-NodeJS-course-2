@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { PrimaryColumn, Column, BaseEntity } from 'typeorm';
+import {Entity, Column, PrimaryColumn, BaseEntity} from 'typeorm';
 
 export interface IUser {
   id?: string,
@@ -10,18 +10,18 @@ export interface IUser {
 /**
  * User class.
  */
-
+@Entity({name: 'User'})
 export class User extends BaseEntity{
-  @PrimaryColumn()
+  @PrimaryColumn('varchar', {length: 100})
     id: string;
 
-    @Column()
+    @Column('varchar', {length: 100})
     name: string;
 
-    @Column()
+    @Column('varchar', {length: 100})
     login: string;
 
-    @Column()
+    @Column('varchar', {length: 100})
     password: string;
     /**
    * User constructor.

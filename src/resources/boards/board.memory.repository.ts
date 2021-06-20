@@ -1,42 +1,40 @@
 
-import { v4 as uuidv4 } from 'uuid';
-import tasks from '../tasks/task.memory.repository';
+
 import {Board ,IBoard} from './board.model';
-import { ITask } from '../tasks/task.model';
+import { Task } from '../tasks/task.model';
 
-const boards:IBoard[] = [];
+const getAllBoards = async () => Board.find();
 
-const getAllBoards = async () => boards.filter((entity) => entity);
-
-const getBoard = async (boardId:string) => boards.filter((board) => board.id === boardId)[0]
+const getBoard = async (boardId:string) => Board.findOne({id: boardId})
 
 const createBoard = async (body:IBoard) => {
-  const boardId:string = uuidv4();
-  const newBoard:IBoard = {
-    id: boardId,
-    ...body  
-  }
-  boards.push(new Board({...newBoard}));
-  return boards.filter(board => board.id === boardId)[0];
+  const board = new Board(body);
+  await board.save();
+  return board;
 }
 
 const removeBoard = async (boardId:string) => {
-  const boardIndex = boards.findIndex(board => board.id === boardId);
-  // const updateTasks = tasks.filter(task => task.boardId !== boardId);
-  // tasks = updateTasks;
-  tasks.forEach((task:ITask, index:number) => {
-    if(task.boardId === boardId){
-      console.log('tasks[index]', tasks[index])
-      tasks[index]!.boardId = undefined
-    }
-  });
-  return boards.splice(boardIndex, 1);
+  
+  const timber = await Board.findOne({id: boardId});
+  if(timber){
+    await timber.remove();
+    const updateTasks = await Task.find({boardId:boardId});
+    updateTasks.forEach(task=>{
+      task.boardId = null;
+      task.save();
+    })
+    return true;
+  }
+  return false;
 }
 
 const updateBoard = async (boardId:string, body:IBoard) => {
-  const boardIndex = boards.findIndex(board => board.id === boardId);
-  boards[boardIndex] = {id:boardId, ...body};
-  return boards[boardIndex];
+  const board = await Board.findOne({id: boardId});
+    if (!board) {
+        throw new Error('User not found');
+    }
+    await Board.update(boardId, body);
+    return Board.findOne(boardId);
 }
 
 export { getAllBoards, getBoard, createBoard, removeBoard, updateBoard };
