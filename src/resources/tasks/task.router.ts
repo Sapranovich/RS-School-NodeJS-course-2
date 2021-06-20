@@ -11,7 +11,7 @@ export const router = express.Router();
 router.route('/:boardId/tasks').get(catchErrors(async ( req:express.Request, res: express.Response) => {
   const { boardId } = req.params;
   const tasks = await taskService.getAllTasks(boardId!);
-  if (tasks) {
+  if (tasks.length) {
     res.status(StatusCodes.OK).json(tasks);
   } else {
     res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
@@ -23,7 +23,7 @@ router.route('/:boardId/tasks/:taskId').get(catchErrors(async (req:express.Reque
     const { boardId, taskId } = req.params;
     const task = await taskService.getTask(boardId!, taskId!);
     if (task) {
-      res.status(StatusCodes.OK).json(task);
+      res.status(200).json(task);
     } else {
       res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND);
     }

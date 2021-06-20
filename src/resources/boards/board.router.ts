@@ -52,7 +52,12 @@ router.route('/:boardId').put(catchErrors(async (req: express.Request, res: expr
 }))
 
 router.route('/:boardId').delete(catchErrors(async (req: express.Request, res: express.Response) => {
+  // const { boardId } = req.params;
+  // await boardService.removeBoard(boardId!);
+  // res.status(StatusCodes.NO_CONTENT).json();
   const { boardId } = req.params;
+  // if (await boardService.removeBoard(boardId!)) res.status(204).json();
+
   if (await boardService.removeBoard(boardId!)) {
     res.status(StatusCodes.NO_CONTENT).json()
   } else {

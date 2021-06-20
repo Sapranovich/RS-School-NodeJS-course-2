@@ -13,7 +13,7 @@ const getAllTasks = (boardId:string) => taskRepo.getAllTasks(boardId);
  * @param {string} taskId - task id.
  * @returns {Promise<Object>} Task object.
  */
-const getTask = (boardId:string, taskId:string) => taskRepo.getTask(boardId, taskId);
+const getTask = (boardId: string, taskId:string) => taskRepo.getTask(boardId, taskId);
 /**
  * Create task in specific board. 
  * @param {string} boardId - board id. 

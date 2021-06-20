@@ -21,7 +21,7 @@ export class Task extends BaseEntity{
   @Column('varchar', {length: 100})
   title: string;
 
-  @Column('varchar', {length: 100})
+  @Column({ type: 'integer',nullable: true })
   order: number;
 
   @Column('varchar', {length: 100})
@@ -58,7 +58,7 @@ export class Task extends BaseEntity{
     super();
     this.id = id;
     this.title = title;
-    this.order = +order;
+    this.order = Number(order);
     this.description = description;
     this.userId = userId;
     this.boardId = boardId;

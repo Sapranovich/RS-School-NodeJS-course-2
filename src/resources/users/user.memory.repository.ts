@@ -1,5 +1,6 @@
 // import { v4 as uuidv4 } from 'uuid';
 import { IUser, User } from './user.model';
+import { getRepository } from 'typeorm';
 import { Task } from '../tasks/task.model';
 
 
@@ -20,13 +21,9 @@ const createUser = async (body: IUser) => {
 }
 
 const removeUser = async (userId: string) => {
-  const timber = await User.findOne({id: userId});
-  if(timber){
-    await timber.remove();
-    const updateTasks = await Task.find({userId: userId});
-    await updateTasks.forEach(task => {
-      task.remove();
-    })
+  const task = await getRepository(User).delete(userId);
+  if(task){
+    await getRepository(Task).update({userId: userId}, {userId: null })
     return true;
   }
   return false;
