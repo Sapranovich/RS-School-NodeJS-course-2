@@ -32,7 +32,7 @@ exports.router = express_1.default.Router();
 exports.router.route('/:boardId/tasks').get(errorHandler_1.catchErrors(async (req, res) => {
     const { boardId } = req.params;
     const tasks = await taskService.getAllTasks(boardId);
-    if (tasks) {
+    if (tasks.length) {
         res.status(http_status_codes_1.StatusCodes.OK).json(tasks);
     }
     else {
@@ -44,7 +44,7 @@ exports.router.route('/:boardId/tasks/:taskId').get(errorHandler_1.catchErrors(a
     const { boardId, taskId } = req.params;
     const task = await taskService.getTask(boardId, taskId);
     if (task) {
-        res.status(http_status_codes_1.StatusCodes.OK).json(task);
+        res.status(200).json(task);
     }
     else {
         res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);

@@ -25,6 +25,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
 const http_status_codes_1 = require("http-status-codes");
+const column_model_1 = require("../columns/column.model");
 const errorHandler_1 = require("../../common/errorHandler");
 // import {User,} from './user.model';
 const boardService = __importStar(require("./board.service"));
@@ -49,7 +50,11 @@ exports.router.route('/:boardId').get(errorHandler_1.catchErrors(async (req, res
     }
 }));
 exports.router.route('/').post(errorHandler_1.catchErrors(async (req, res) => {
-    const board = await boardService.createBoard(req.body);
+    const body = {
+        ...req.body,
+        columns: JSON.stringify([...req.body.columns.map((item) => new column_model_1.Column(item))])
+    };
+    const board = await boardService.createBoard(body);
     if (board) {
         res.status(http_status_codes_1.StatusCodes.CREATED).json(board);
     }
@@ -68,7 +73,11 @@ exports.router.route('/:boardId').put(errorHandler_1.catchErrors(async (req, res
     }
 }));
 exports.router.route('/:boardId').delete(errorHandler_1.catchErrors(async (req, res) => {
+    // const { boardId } = req.params;
+    // await boardService.removeBoard(boardId!);
+    // res.status(StatusCodes.NO_CONTENT).json();
     const { boardId } = req.params;
+    // if (await boardService.removeBoard(boardId!)) res.status(204).json();
     if (await boardService.removeBoard(boardId)) {
         res.status(http_status_codes_1.StatusCodes.NO_CONTENT).json();
     }

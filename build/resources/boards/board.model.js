@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Board = void 0;
 const uuid_1 = require("uuid");
-const column_model_1 = require("../columns/column.model");
 const typeorm_1 = require("typeorm");
 /**
  * Board class.
@@ -23,11 +22,11 @@ let Board = class Board extends typeorm_1.BaseEntity {
      * @param {string} title - boadr name.
      * @param {Object} Column - Colunm instance.
      */
-    constructor({ id = uuid_1.v4(), title = 'RS School', columns = new Array() } = {}) {
+    constructor({ id = uuid_1.v4(), title = 'RS School', columns = '[]' } = {}) {
         super();
         this.id = id;
         this.title = title;
-        this.columns = [...columns.map((item) => new column_model_1.Column(item))];
+        this.columns = columns;
     }
 };
 __decorate([
@@ -35,12 +34,12 @@ __decorate([
     __metadata("design:type", String)
 ], Board.prototype, "id", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 100 }),
+    typeorm_1.Column({ type: 'varchar' }),
     __metadata("design:type", String)
 ], Board.prototype, "title", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 100 }),
-    __metadata("design:type", Array)
+    typeorm_1.Column({ type: "json" }),
+    __metadata("design:type", String)
 ], Board.prototype, "columns", void 0);
 Board = __decorate([
     typeorm_1.Entity({ name: 'Board' }),

@@ -5,7 +5,7 @@ import { getRepository } from 'typeorm';
 import { Task } from '../tasks/task.model';
 
 
-function boardInFormat(board: any) {
+function boardInFormat(board: IBoard) {
   const resault = {
     ...board,
     columns: JSON.parse(board.columns)
@@ -19,6 +19,9 @@ const getAllBoards = async () => {
 
 const getBoard = async (boardId: string) => {
   const board = await Board.findOne({ id: boardId });
+  if (!board) {
+    return false;
+  }
   return boardInFormat(board);
 }
 
@@ -33,12 +36,6 @@ const removeBoard = async (boardId: string) => {
   if (task) {
     await getRepository(Task).delete({boardId: boardId});
     return true;
-    // const updateTasks = await Task.find({ boardId: boardId });
-    // await updateTasks.forEach(task => {
-    //   task.boardId = null;
-    //   task.save();
-    // })
-    // return task;
   }
   return false;
 }

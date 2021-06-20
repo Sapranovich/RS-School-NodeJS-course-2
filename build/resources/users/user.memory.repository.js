@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUser = exports.removeUser = exports.createUser = exports.getUser = exports.getAllUsers = void 0;
 // import { v4 as uuidv4 } from 'uuid';
 const user_model_1 = require("./user.model");
+const typeorm_1 = require("typeorm");
 const task_model_1 = require("../tasks/task.model");
 const getAllUsers = async () => user_model_1.User.find();
 exports.getAllUsers = getAllUsers;
@@ -21,13 +22,9 @@ const createUser = async (body) => {
 };
 exports.createUser = createUser;
 const removeUser = async (userId) => {
-    const timber = await user_model_1.User.findOne({ id: userId });
-    if (timber) {
-        await timber.remove();
-        const updateTasks = await task_model_1.Task.find({ userId: userId });
-        await updateTasks.forEach(task => {
-            task.remove();
-        });
+    const task = await typeorm_1.getRepository(user_model_1.User).delete(userId);
+    if (task) {
+        await typeorm_1.getRepository(task_model_1.Task).update({ userId: userId }, { userId: null });
         return true;
     }
     return false;

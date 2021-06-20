@@ -14,19 +14,19 @@ services:
     volumes: 
       - db_volume:/var/lib/postgresql/data
 
-  # node-web-app:
-  #   image: ${NODE_WEB_APP_IMAGE}
-  #   restart: always
-  #   networks:
-  #     - docker_network 
-  #   ports:
-  #     - ${PORT}:${PORT}
-  #   volumes: 
-  #     - ./build:/build
-  #     - node-web-app_volume:/logs
+  node-web-app:
+    image: ${NODE_WEB_APP_IMAGE}
+    restart: always
+    networks:
+      - docker_network 
+    ports:
+      - ${PORT}:${PORT}
+    volumes: 
+      - ./build:/build
+      - node-web-app_volume:/logs
 volumes: 
   db_volume:
-  # node-web-app_volume:
+  node-web-app_volume:
 
 networks:   
   docker_network:
