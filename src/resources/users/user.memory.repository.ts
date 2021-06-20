@@ -24,7 +24,7 @@ const removeUser = async (userId: string) => {
   if(timber){
     await timber.remove();
     const updateTasks = await Task.find({userId: userId});
-    updateTasks.forEach(task=>{
+    await updateTasks.forEach(task => {
       task.remove();
     })
     return true;

@@ -2,13 +2,13 @@ import { v4 as uuidv4 } from 'uuid';
 import {Entity, Column, PrimaryColumn, BaseEntity} from 'typeorm';
 
 export interface ITask {
-  id?: string,
-  title?: string,
-  order?: number,
-  description?: string,
-  boardId?: string | null,
-  columnId?: string,
-  userId?: string | null,
+  id?: string;
+  title?: string;
+  order?: number;
+  description?: string;
+  boardId?: string | null;
+  columnId?: string | null;
+  userId?: string | null;
 }
 /**
  * Task class.
@@ -30,8 +30,8 @@ export class Task extends BaseEntity{
   @Column({ type: 'varchar', nullable: true })
   boardId: string | null;
 
-  @Column('varchar', {length: 100})
-  columnId: string;
+  @Column({ type: 'varchar', nullable: true })
+  columnId: string | null;
 
   @Column({ type: 'varchar', nullable: true })
   userId: string | null;
@@ -52,13 +52,13 @@ export class Task extends BaseEntity{
     order = 0,
     description = 'Description',
     userId = null,
-    boardId = 'boardId',
-    columnId = 'columnId'
-  } = {}) {
+    boardId = null,
+    columnId = null
+  } = {} as ITask) {
     super();
     this.id = id;
     this.title = title;
-    this.order = order;
+    this.order = +order;
     this.description = description;
     this.userId = userId;
     this.boardId = boardId;

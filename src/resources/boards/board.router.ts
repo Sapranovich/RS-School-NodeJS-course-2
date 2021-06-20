@@ -1,5 +1,6 @@
 import express from 'express';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
+import { Column, IColumn } from "../columns/column.model";
 import { catchErrors } from '../../common/errorHandler';
 // import {User,} from './user.model';
 import * as boardService from './board.service';
@@ -27,7 +28,11 @@ router.route('/:boardId').get(catchErrors(async (req: express.Request, res: expr
 }))
 
 router.route('/').post(catchErrors(async (req: express.Request, res: express.Response) => {
-  const board = await boardService.createBoard(req.body);
+  const body = {
+    ...req.body,
+    columns: JSON.stringify([...req.body.columns.map((item: IColumn) => new Column(item))])
+  }
+  const board = await boardService.createBoard(body);
   if (board) {
     res.status(StatusCodes.CREATED).json(board)
   } else {

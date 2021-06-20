@@ -1,27 +1,24 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Column, IColumn } from "../columns/column.model";
 import {Entity, Column as ColumnType, PrimaryColumn, BaseEntity}  from 'typeorm';
 
 
 export interface IBoard {
   id?: string,
   title: string,
-  columns: Array<IColumn>
+  columns: string
 }
 
 /**
  * Board class.
  */
- @Entity({name: 'Board'})
+@Entity({name: 'Board'})
 export class Board extends BaseEntity {
   @PrimaryColumn('varchar', {length: 100})
   id: string;
-  
-  @ColumnType('varchar', {length: 100})
+  @ColumnType({ type: 'varchar'})
   title: string;
-
-  @ColumnType('varchar', {length: 100})
-  columns: Array<IColumn>;
+  @ColumnType({type: "json"})
+  columns: string;
   /**
    * Board constructor.
    * @param {string} id - instance id.
@@ -29,10 +26,10 @@ export class Board extends BaseEntity {
    * @param {Object} Column - Colunm instance.
    */
 
-  constructor({ id = uuidv4(), title = 'RS School', columns = new Array<IColumn>() } = {}) {
+  constructor({ id = uuidv4(), title = 'RS School', columns = '[]' } = {}) {
     super();
     this.id = id;
     this.title = title;
-    this.columns = [...columns.map((item: IColumn) => new Column(item))];
+    this.columns = columns;
   }
 }

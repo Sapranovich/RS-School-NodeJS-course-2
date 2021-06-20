@@ -8,7 +8,7 @@ import * as taskService from './task.service';
 export const router = express.Router();
 
 
-router.route('/:boardId/tasks').get(catchErrors(async (req:express.Request, res: express.Response) => {
+router.route('/:boardId/tasks').get(catchErrors(async ( req:express.Request, res: express.Response) => {
   const { boardId } = req.params;
   const tasks = await taskService.getAllTasks(boardId!);
   if (tasks) {
