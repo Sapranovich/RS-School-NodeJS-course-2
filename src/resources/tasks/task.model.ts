@@ -18,22 +18,22 @@ export class Task extends BaseEntity{
   @PrimaryColumn('varchar', {length: 100})
   id: string;
 
-  @Column()
+  @Column('varchar', {length: 100})
   title: string;
 
-  @Column()
+  @Column('varchar', {length: 100})
   order: number;
 
-  @Column()
+  @Column('varchar', {length: 100})
   description: string;
 
-  @Column()
+  @Column({ type: 'varchar', nullable: true })
   boardId: string | null;
 
-  @Column()
+  @Column('varchar', {length: 100})
   columnId: string;
 
-  @Column()
+  @Column({ type: 'varchar', nullable: true })
   userId: string | null;
 
       /**

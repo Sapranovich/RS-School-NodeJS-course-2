@@ -46,7 +46,7 @@ __decorate([
     __metadata("design:type", String)
 ], Task.prototype, "title", void 0);
 __decorate([
-    typeorm_1.Column("int"),
+    typeorm_1.Column('varchar', { length: 100 }),
     __metadata("design:type", Number)
 ], Task.prototype, "order", void 0);
 __decorate([
@@ -54,15 +54,15 @@ __decorate([
     __metadata("design:type", String)
 ], Task.prototype, "description", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 100 }),
-    __metadata("design:type", String)
+    typeorm_1.Column({ type: 'varchar', nullable: true }),
+    __metadata("design:type", Object)
 ], Task.prototype, "boardId", void 0);
 __decorate([
     typeorm_1.Column('varchar', { length: 100 }),
     __metadata("design:type", String)
 ], Task.prototype, "columnId", void 0);
 __decorate([
-    typeorm_1.Column('varchar', { length: 100 }),
+    typeorm_1.Column({ type: 'varchar', nullable: true }),
     __metadata("design:type", Object)
 ], Task.prototype, "userId", void 0);
 Task = __decorate([

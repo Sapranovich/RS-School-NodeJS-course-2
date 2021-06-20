@@ -1,43 +1,38 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateBoard = exports.removeBoard = exports.createBoard = exports.getBoard = exports.getAllBoards = void 0;
-const uuid_1 = require("uuid");
-const task_memory_repository_1 = __importDefault(require("../tasks/task.memory.repository"));
 const board_model_1 = require("./board.model");
-const boards = [];
-const getAllBoards = async () => boards.filter((entity) => entity);
+const task_model_1 = require("../tasks/task.model");
+const getAllBoards = async () => board_model_1.Board.find();
 exports.getAllBoards = getAllBoards;
-const getBoard = async (boardId) => boards.filter((board) => board.id === boardId)[0];
+const getBoard = async (boardId) => board_model_1.Board.findOne({ id: boardId });
 exports.getBoard = getBoard;
 const createBoard = async (body) => {
-    const boardId = uuid_1.v4();
-    const newBoard = {
-        id: boardId,
-        ...body
-    };
-    boards.push(new board_model_1.Board({ ...newBoard }));
-    return boards.filter(board => board.id === boardId)[0];
+    const board = new board_model_1.Board(body);
+    await board.save();
+    return board;
 };
 exports.createBoard = createBoard;
 const removeBoard = async (boardId) => {
-    const boardIndex = boards.findIndex(board => board.id === boardId);
-    // const updateTasks = tasks.filter(task => task.boardId !== boardId);
-    // tasks = updateTasks;
-    task_memory_repository_1.default.forEach((task, index) => {
-        if (task.boardId === boardId) {
-            console.log('tasks[index]', task_memory_repository_1.default[index]);
-            task_memory_repository_1.default[index].boardId = undefined;
-        }
-    });
-    return boards.splice(boardIndex, 1);
+    const timber = await board_model_1.Board.findOne({ id: boardId });
+    if (timber) {
+        await timber.remove();
+        const updateTasks = await task_model_1.Task.find({ boardId: boardId });
+        updateTasks.forEach(task => {
+            task.boardId = null;
+            task.save();
+        });
+        return true;
+    }
+    return false;
 };
 exports.removeBoard = removeBoard;
 const updateBoard = async (boardId, body) => {
-    const boardIndex = boards.findIndex(board => board.id === boardId);
-    boards[boardIndex] = { id: boardId, ...body };
-    return boards[boardIndex];
+    const board = await board_model_1.Board.findOne({ id: boardId });
+    if (!board) {
+        throw new Error('User not found');
+    }
+    await board_model_1.Board.update(boardId, body);
+    return board_model_1.Board.findOne(boardId);
 };
 exports.updateBoard = updateBoard;

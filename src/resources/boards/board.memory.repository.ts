@@ -18,7 +18,7 @@ const removeBoard = async (boardId:string) => {
   const timber = await Board.findOne({id: boardId});
   if(timber){
     await timber.remove();
-    const updateTasks = await Task.find({boardId:boardId});
+    const updateTasks = await Task.find({boardId: boardId});
     updateTasks.forEach(task=>{
       task.boardId = null;
       task.save();

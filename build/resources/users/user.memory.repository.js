@@ -3,10 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUser = exports.removeUser = exports.createUser = exports.getUser = exports.getAllUsers = void 0;
 // import { v4 as uuidv4 } from 'uuid';
 const user_model_1 = require("./user.model");
+const task_model_1 = require("../tasks/task.model");
 const getAllUsers = async () => user_model_1.User.find();
 exports.getAllUsers = getAllUsers;
 const getUser = async (userId) => {
-    const user = await user_model_1.User.findOne(userId);
+    const user = await user_model_1.User.findOne({ id: userId });
     if (!user) {
         throw new Error('User not found');
     }
@@ -14,26 +15,26 @@ const getUser = async (userId) => {
 };
 exports.getUser = getUser;
 const createUser = async (body) => {
-    const user = await new user_model_1.User(body);
+    const user = new user_model_1.User(body);
     await user.save();
     return user;
 };
 exports.createUser = createUser;
 const removeUser = async (userId) => {
-    console.log(userId);
-    return true;
-    // const tasks = await tasksRepo.getAll();
-    // if (tasks.length) {
-    //     tasks.forEach(async (task: Task) => {
-    //         if (task.userId === id) {
-    //             await tasksRepo.update(task.id, { ...task, userId: null });
-    //         }
-    //     });
-    // }
+    const timber = await user_model_1.User.findOne({ id: userId });
+    if (timber) {
+        await timber.remove();
+        const updateTasks = await task_model_1.Task.find({ userId: userId });
+        updateTasks.forEach(task => {
+            task.remove();
+        });
+        return true;
+    }
+    return false;
 };
 exports.removeUser = removeUser;
 const updateUser = async (userId, body) => {
-    const user = await user_model_1.User.findOne(userId);
+    const user = await user_model_1.User.findOne({ id: userId });
     if (!user) {
         throw new Error('User not found');
     }
