@@ -2,7 +2,6 @@ import express from 'express';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { Column, IColumn } from "../columns/column.model";
 import { catchErrors } from '../../common/errorHandler';
-// import {User,} from './user.model';
 import * as boardService from './board.service';
 
 export const router = express.Router();
@@ -52,11 +51,7 @@ router.route('/:boardId').put(catchErrors(async (req: express.Request, res: expr
 }))
 
 router.route('/:boardId').delete(catchErrors(async (req: express.Request, res: express.Response) => {
-  // const { boardId } = req.params;
-  // await boardService.removeBoard(boardId!);
-  // res.status(StatusCodes.NO_CONTENT).json();
   const { boardId } = req.params;
-  // if (await boardService.removeBoard(boardId!)) res.status(204).json();
 
   if (await boardService.removeBoard(boardId!)) {
     res.status(StatusCodes.NO_CONTENT).json()

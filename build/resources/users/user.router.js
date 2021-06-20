@@ -24,8 +24,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = __importDefault(require("express"));
-const user_model_1 = require("./user.model");
 const http_status_codes_1 = require("http-status-codes");
+const user_model_1 = require("./user.model");
 const usersService = __importStar(require("./user.service"));
 const errorHandler_1 = require("../../common/errorHandler");
 exports.router = express_1.default.Router();

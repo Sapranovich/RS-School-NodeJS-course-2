@@ -1,12 +1,12 @@
 import {Task , ITask} from './task.model';
 
 
-const getAllTasks = async (boardId:string) => await Task.find({ boardId: boardId});
+const getAllTasks = async (boardId:string) => Task.find({ boardId});
 
-const getTask = async (boardId: string, taskId:string) => Task.findOne({id: taskId, boardId: boardId});
+const getTask = async (boardId: string, taskId:string) => Task.findOne({id: taskId, boardId});
  
 const createTask = async (boardId:string, body: ITask) => {
-  const task = new Task({ ...body, boardId: boardId});
+  const task = new Task({ ...body, boardId});
   await task.save();
   return task;
 }
@@ -25,20 +25,10 @@ const updateTask = async (taskId:string, body: ITask) => {
     if (!task) {
         throw new Error('User not found');
     }
-    console.log('adasdasdasdasdas', body);
     await Task.update(taskId, body);
     return Task.findOne(taskId);
-
-    // const user = await User.findOne({id: userId});
-    // if (!user) {
-    //     throw new Error('User not found');
-    // }
-    // await User.update(userId, body);
-    // return User.findOne(userId);
 }
 
-// const tasks = [];
-// export default tasks;
 export {
     getAllTasks,
     getTask,

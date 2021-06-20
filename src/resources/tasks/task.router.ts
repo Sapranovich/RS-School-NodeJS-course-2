@@ -2,7 +2,6 @@
 import express from 'express';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { catchErrors } from '../../common/errorHandler';
-// import {User,} from './user.model';
 import * as taskService from './task.service';
 
 export const router = express.Router();

@@ -15,8 +15,10 @@ export interface IBoard {
 export class Board extends BaseEntity {
   @PrimaryColumn('varchar', {length: 100})
   id: string;
+
   @ColumnType({ type: 'varchar'})
   title: string;
+
   @ColumnType({type: "json"})
   columns: string;
   /**

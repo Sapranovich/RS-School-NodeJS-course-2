@@ -46,5 +46,4 @@ app.use('/boards', [boardRouter.router, taskRouter.router]);
 app.use(errorHandler);
 
 
-
 export { app };

@@ -1,9 +1,6 @@
-
-
-import { Board, IBoard } from './board.model';
 import { getRepository } from 'typeorm';
+import { Board, IBoard } from './board.model';
 import { Task } from '../tasks/task.model';
-
 
 function boardInFormat(board: IBoard) {
   const resault = {
@@ -13,9 +10,7 @@ function boardInFormat(board: IBoard) {
   return resault;
 }
 
-const getAllBoards = async () => {
-  return  (await Board.find()).map(board => boardInFormat(board))
-};
+const getAllBoards = async () => (await Board.find()).map(board => boardInFormat(board));
 
 const getBoard = async (boardId: string) => {
   const board = await Board.findOne({ id: boardId });
@@ -34,7 +29,7 @@ const createBoard = async (body: IBoard) => {
 const removeBoard = async (boardId: string) => {
   const task = await getRepository(Board).delete(boardId);
   if (task) {
-    await getRepository(Task).delete({boardId: boardId});
+    await getRepository(Task).delete({boardId});
     return true;
   }
   return false;

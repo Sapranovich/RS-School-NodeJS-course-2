@@ -26,7 +26,6 @@ exports.router = void 0;
 const express_1 = __importDefault(require("express"));
 const http_status_codes_1 = require("http-status-codes");
 const errorHandler_1 = require("../../common/errorHandler");
-// import {User,} from './user.model';
 const taskService = __importStar(require("./task.service"));
 exports.router = express_1.default.Router();
 exports.router.route('/:boardId/tasks').get(errorHandler_1.catchErrors(async (req, res) => {

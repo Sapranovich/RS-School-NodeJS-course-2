@@ -1,6 +1,6 @@
 import express from 'express';
-import { User, } from './user.model';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
+import { User, } from './user.model';
 import * as usersService from './user.service';
 import { catchErrors } from '../../common/errorHandler';
 
