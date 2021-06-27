@@ -8,7 +8,8 @@ import * as boardRouter from './resources/boards/board.router';
 import * as loginRouter from './resources/login/login.router';
 import { errorHandler } from './common/errorHandler';
 import {logger, logInfo} from './common/logger';
-import { checkToken } from './common/checkToken';
+import { checkToken } from './middleware/checkToken';
+
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
