@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import {Entity, Column, PrimaryColumn, BaseEntity} from 'typeorm';
+import bcrypt from 'bcrypt';
 
 export interface IUser {
   id?: string,
@@ -41,9 +42,8 @@ export class User extends BaseEntity{
     this.id = id;
     this.name = name;
     this.login = login;
-    this.password = password;
+    this.password = bcrypt.hash(password, 10).toString();
   }
-
     /**
    * Takes a User object and returns only needed fields.
    * @param {Object} user - user instance.
@@ -52,7 +52,8 @@ export class User extends BaseEntity{
    */
 
   static toResponse(user: IUser) {
-    const { id, name, login } = user;
-    return { id, name, login };
+    console.log(user);
+    // const { id, name, login } = user;
+    return user;
   }
 }

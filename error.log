@@ -91,3 +91,8 @@
 {"message":"      uncaughtException: ⨯ Unable to compile TypeScript:\n\u001b[96msrc/ormconfig.ts\u001b[0m:\u001b[93m5\u001b[0m:\u001b[93m1\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS6133: \u001b[0m'PORT' is declared but its value is never read.\r\n\r\n\u001b[7m5\u001b[0m import { PORT } from './common/config';\r\n\u001b[7m \u001b[0m \u001b[91m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\u001b[0m\r\n","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}

@@ -2891,3 +2891,8 @@
 {"message":"        {\"url\":\"/boards/d805d44a-b6ae-42a0-952b-c0cd1d66cde5/tasks/c93b8603-033c-43d7-8788-158d04c29402\",\"params\":{},\"body\":{}}","level":"\u001b[32m\u001b[32m\u001b[32minfo\u001b[32m\u001b[32m\u001b[39m"}
 {"message":"        {\"url\":\"/boards/d805d44a-b6ae-42a0-952b-c0cd1d66cde5\",\"params\":{},\"body\":{}}","level":"\u001b[32m\u001b[32m\u001b[32minfo\u001b[32m\u001b[32m\u001b[39m"}
 {"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
