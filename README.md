@@ -71,8 +71,17 @@ Press <kbd>F5</kbd> to debug.
 
 For more information, visit: https://code.visualstudio.com/docs/editor/debugging
 
-### Running application in DOCKER
 
+
+### Authentication and JWT
+
+Клоним репозиторий
+```
+docker build -t node-js-task6 .
+```
 ```
 docker-compose up
 ```
+Tак как db локальная, нужно добавить пользователя(admin). Например через Postman сделать POST запрос по (localhost:4000/users), с телом запроса {"name": "admin", "login": "admin", "password": "admin"}.
+
+Далее можно проводить тесты.
