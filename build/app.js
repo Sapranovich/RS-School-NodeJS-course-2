@@ -33,6 +33,7 @@ const boardRouter = __importStar(require("./resources/boards/board.router"));
 const loginRouter = __importStar(require("./resources/login/login.router"));
 const errorHandler_1 = require("./common/errorHandler");
 const logger_1 = require("./common/logger");
+const checkToken_1 = require("./middleware/checkToken");
 const app = express_1.default();
 exports.app = app;
 const swaggerDocument = yamljs_1.default.load(path_1.default.join(__dirname, '../doc/api.yaml'));
@@ -58,6 +59,7 @@ process.on('unhandledRejection', (err) => {
     logger_1.logger.error(errorMessage);
 });
 app.use(logger_1.logInfo);
+app.use(checkToken_1.checkToken);
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
 app.use('/login', loginRouter.router);

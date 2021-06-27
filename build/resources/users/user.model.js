@@ -37,9 +37,8 @@ let User = class User extends typeorm_1.BaseEntity {
    * @static
    */
     static toResponse(user) {
-        console.log(user);
-        // const { id, name, login } = user;
-        return user;
+        const { id, name, login } = user;
+        return { id, name, login };
     }
 };
 __decorate([

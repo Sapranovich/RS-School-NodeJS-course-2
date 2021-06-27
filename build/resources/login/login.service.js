@@ -1,16 +1,17 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.authenticateUser = void 0;
-// import bcrypt from 'bcrypt';
+exports.authUser = void 0;
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_model_1 = require("../users/user.model");
-async function authenticateUser(user) {
+async function authUser(user) {
     const { login, password } = user;
-    console.log('asdasdsad', password);
-    const foundUser = user_model_1.User.findOne({ login });
-    // if (foundUser && await bcrypt.compare(String(password), String(foundUser.password))) {
-    if (foundUser) {
-        return foundUser;
+    const targetUser = await user_model_1.User.findOne({ login });
+    if (targetUser && await bcrypt_1.default.compare(String(password), String(targetUser?.password))) {
+        return targetUser;
     }
     return false;
 }
-exports.authenticateUser = authenticateUser;
+exports.authUser = authUser;

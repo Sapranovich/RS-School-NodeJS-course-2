@@ -32,8 +32,7 @@ exports.router = express_1.default.Router();
 exports.router.route('/').get(errorHandler_1.catchErrors(async (_req, res) => {
     const users = await usersService.getAllUsers();
     if (users) {
-        console.log(users);
-        res.status(http_status_codes_1.StatusCodes.OK).json(users);
+        res.status(http_status_codes_1.StatusCodes.OK).json(users.map(user_model_1.User.toResponse));
     }
     else {
         res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
@@ -43,7 +42,7 @@ exports.router.route('/:userId').get(errorHandler_1.catchErrors(async (req, res)
     const { userId } = req.params;
     const user = await usersService.getUser(userId);
     if (user) {
-        res.status(http_status_codes_1.StatusCodes.OK).json(user);
+        res.status(http_status_codes_1.StatusCodes.OK).json(user_model_1.User.toResponse(user));
     }
     else {
         res.status(http_status_codes_1.StatusCodes.NOT_FOUND).json(http_status_codes_1.ReasonPhrases.NOT_FOUND);
