@@ -82,6 +82,6 @@ docker build -t node-js-task6 .
 ```
 docker-compose up
 ```
-Как как db локальная, нужно добавить пользователя(admin). Например через Postman сделать POST запрос по (localhost:4000/users), с телом запроса {"name": "admin", "login": "admin", "password": "admin"}.
+Tак как db локальная, нужно добавить пользователя(admin). Например через Postman сделать POST запрос по (localhost:4000/users), с телом запроса {"name": "admin", "login": "admin", "password": "admin"}.
 
 Далее можно проводить тесты.
