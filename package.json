@@ -47,6 +47,7 @@
     ]
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.2",
     "bcrypt": "^5.0.1",
     "cross-env": "7.0.3",
     "docdash": "^1.2.0",

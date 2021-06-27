@@ -96,3 +96,22 @@
 {"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
 {"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      uncaughtException: listen EADDRINUSE: address already in use :::4000","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: data must be a string or Buffer and salt must either be a salt string or a number of rounds","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: data must be a string or Buffer and salt must either be a salt string or a number of rounds","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: data must be a string or Buffer and salt must either be a salt string or a number of rounds","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: data must be a string or Buffer and salt must either be a salt string or a number of rounds","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: data must be a string or Buffer and salt must either be a salt string or a number of rounds","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: data must be a string or Buffer and salt must either be a salt string or a number of rounds","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: data must be a string or Buffer and salt must either be a salt string or a number of rounds","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      unhandledRejection - Error: data must be a string or Buffer and salt must either be a salt string or a number of rounds","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}
+{"message":"      {\"status\":500,\"message\":\"Internal Server Error\"}","level":"\u001b[31m\u001b[31m\u001b[31merror\u001b[31m\u001b[31m\u001b[39m"}

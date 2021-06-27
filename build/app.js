@@ -30,6 +30,7 @@ const yamljs_1 = __importDefault(require("yamljs"));
 const userRouter = __importStar(require("./resources/users/user.router"));
 const taskRouter = __importStar(require("./resources/tasks/task.router"));
 const boardRouter = __importStar(require("./resources/boards/board.router"));
+const loginRouter = __importStar(require("./resources/login/login.router"));
 const errorHandler_1 = require("./common/errorHandler");
 const logger_1 = require("./common/logger");
 const app = express_1.default();
@@ -59,4 +60,5 @@ process.on('unhandledRejection', (err) => {
 app.use(logger_1.logInfo);
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
+app.use('/login', loginRouter.router);
 app.use(errorHandler_1.errorHandler);

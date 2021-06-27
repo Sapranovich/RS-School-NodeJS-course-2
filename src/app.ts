@@ -5,10 +5,10 @@ import YAML from 'yamljs';
 import * as userRouter from './resources/users/user.router';
 import * as taskRouter from './resources/tasks/task.router';
 import * as boardRouter from './resources/boards/board.router';
-
+import * as loginRouter from './resources/login/login.router';
 import { errorHandler } from './common/errorHandler';
 import {logger, logInfo} from './common/logger';
-
+import { checkToken } from './common/checkToken';
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
@@ -40,9 +40,11 @@ process.on('unhandledRejection', (err) => {
 });
 
 app.use(logInfo);
+app.use(checkToken);
 
 app.use('/users', userRouter.router);
 app.use('/boards', [boardRouter.router, taskRouter.router]);
+app.use('/login', loginRouter.router);
 app.use(errorHandler);
 
 
