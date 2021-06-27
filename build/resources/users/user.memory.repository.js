@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUser = exports.removeUser = exports.createUser = exports.getUser = exports.getAllUsers = void 0;
 // import { v4 as uuidv4 } from 'uuid';
 const typeorm_1 = require("typeorm");
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const user_model_1 = require("./user.model");
 const task_model_1 = require("../tasks/task.model");
-const bcrypt_1 = __importDefault(require("bcrypt"));
 const getAllUsers = async () => user_model_1.User.find();
 exports.getAllUsers = getAllUsers;
 const getUser = async (userId) => {
@@ -20,8 +20,11 @@ const getUser = async (userId) => {
 };
 exports.getUser = getUser;
 const createUser = async (body) => {
-    body.password = await bcrypt_1.default.hash(body.password.toString(), 10);
-    const user = new user_model_1.User(body);
+    const updateBody = {
+        ...body,
+        password: await bcrypt_1.default.hash(body.password.toString(), 10)
+    };
+    const user = new user_model_1.User(updateBody);
     await user.save();
     return user;
 };
